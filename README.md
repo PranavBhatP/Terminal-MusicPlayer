@@ -95,10 +95,6 @@ If you encounter errors like linking issues or missing libraries, ensure SFML is
 
 Contributions are welcome! Feel free to open issues or submit pull requests to help improve the project.
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
 ---
 
 This `README.md` provides a structured guide to help users understand the setup, usage, and troubleshooting for your project. Let me know if you'd like additional customization!
