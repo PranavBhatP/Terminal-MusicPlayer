@@ -208,19 +208,37 @@ int main() {
         cin >> choice;
         cin.ignore();
 
-        if (choice == 1) nextNode();
-        else if (choice == 2) prevNode();
-        else if (choice == 3) show();
-        else if (choice == 4) shufflePlaylist();
-        else if (choice == 5) togglePause();
-        else if (choice == 6) {
-            string songName;
-            cout << "Enter song name: ";
-            getline(cin, songName);
-            specificSong(songName);
+        switch (choice) {
+            case 1:
+                nextNode();
+                break;
+            case 2:
+                prevNode();
+                break;
+            case 3:
+                show();
+                break;
+            case 4:
+                shufflePlaylist();
+                break;
+            case 5:
+                togglePause();
+                break;
+            case 6: {
+                string songName;
+                cout << "Enter song name: ";
+                getline(cin, songName);
+                specificSong(songName);
+                break;
+            }
+            case 7:
+                enterOrder();
+                break;
+            case 8:
+                return 0;
+            default:
+                cout << "Invalid choice. Please try again.\n";
         }
-        else if (choice == 7) enterOrder();
-        else if (choice == 8) break;
 
         this_thread::sleep_for(chrono::milliseconds(100));
     }
