@@ -1,7 +1,3 @@
-Here’s a sample `README.md` for your music player project:
-
----
-
 # C++ Music Player 🎶
 
 A terminal-based music player in C++ using [SFML](https://www.sfml-dev.org/) for audio handling and circular doubly linked lists for playlist management. This music player allows users to play, pause, shuffle, and traverse through songs. Users can also specify the playback order for a customized playlist experience. The music player employs multi-threading and similar concepts to ensure smooth and seamless playback on the go!
