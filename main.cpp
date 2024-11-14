@@ -9,6 +9,7 @@
 #include <chrono>
 #include <thread>
 #include <sstream>
+#include<regex>
 
 using namespace std;
 namespace fs = std::filesystem;
@@ -32,7 +33,19 @@ string toLower(const string& str) {
 }
 
 void loadSongs() {
-    string path = "./music";
+    string path;
+    cout<< "Enter the playlist name: ";
+    cin>>path;
+
+    path = "./" + path;
+
+    if (fs::exists(path) && fs::is_directory(path)) {
+        cout << "Success! Proceeding to load..." << endl;
+    } else {
+        cout << "Error: Playlist does not exist in the root folder." << endl;
+        return;
+    }
+
     for (const auto& entry : fs::directory_iterator(path)) {
         if (entry.path().extension() == ".mp3") {
             string songName = entry.path().filename().string();
@@ -205,8 +218,19 @@ int main() {
         cout << "6. Play Specific Song\n";
         cout << "7. Enter Playback Order\n";
         cout << "8. Exit\n";
-        cin >> choice;
-        cin.ignore();
+        string input; 
+        regex validChoiceRegex("^[1-8]$"); 
+        while (true) {
+            cout << "Enter your choice: ";
+            cin >> input;
+
+            if (regex_match(input, validChoiceRegex)) {
+                choice = stoi(input); 
+                break;
+            } else {
+                cout << "Invalid input. Please enter a number between 1 and 8.\n";
+            }
+        }
 
         switch (choice) {
             case 1:
@@ -238,6 +262,7 @@ int main() {
                 return 0;
             default:
                 cout << "Invalid choice. Please try again.\n";
+                break;
         }
 
         this_thread::sleep_for(chrono::milliseconds(100));
